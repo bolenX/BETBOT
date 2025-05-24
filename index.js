@@ -17,11 +17,14 @@ async function getGIBPrice() {
       'https://api.geckoterminal.com/api/v2/networks/solana/pools/G384jB8BvBVBMMyy7ZopdUjk7t4GsnDiWJKxG1eEM8bD',
       { headers: { 'User-Agent': 'Mozilla/5.0' } }
     );
-    console.log("✅ GIB Price API response:", response.data);
+    const price = parseFloat(response.data.data.attributes.base_token_price_usd);
+    console.log("✅ GIB Price:", price);
+    return price;
   } catch (error) {
     console.error("❌ GIB API Error:", error?.response?.status, error?.response?.data || error.message);
+    return null;
   }
-} // ✅ <-- this was missing
+}
 
 async function sendTelegramAlert(message) {
   const url = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
@@ -38,7 +41,7 @@ async function monitor() {
   }
 }
 
-setInterval(monitor, 60 * 1000);
+setInterval(monitor, 5 * 60 * 1000);
 
 app.get('/', (req, res) => res.send('GIB Tracker Bot is running...'));
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
