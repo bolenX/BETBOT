@@ -13,7 +13,7 @@ let lastAlertPrice = 0;
 
 async function getGIBPrice() {
   try {
-    const response = await axios.get('https://api.geckoterminal.com/api/v2/networks/solana/pools/dVB88UQyi3nNrWEycSh7tmUjj1Gt1feRt1qk4jyk1Uc');
+    const response = await axios.get('https://api.geckoterminal.com/api/v2/networks/solana/pools/3aU4u9zxur3YtRVL5mHpGuYoH53wD3LSN8PY8oJ4MTpi');
     const price = response.data.data.attributes.base_token_price_usd;
     return parseFloat(price);
   } catch (e) {
