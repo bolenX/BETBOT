@@ -13,14 +13,15 @@ let lastAlertPrice = 0;
 
 async function getGIBPrice() {
   try {
-  const response = await axios.get(
-    'https://api.geckoterminal.com/api/v2/networks/solana/pools/3aU4u9zxur3YtRVL5mHpGuYoH53wD3LSN8PY8oJ4MTpi',
-    { headers: { 'User-Agent': 'Mozilla/5.0' } }
-  );
-  console.log("✅ GIB Price API response:", response.data);
-} catch (error) {
-  console.error("❌ GIB API Error:", error?.response?.status, error?.response?.data || error.message);
-}
+    const response = await axios.get(
+      'https://api.geckoterminal.com/api/v2/networks/solana/pools/3aU4u9zxur3YtRVL5mHpGuYoH53wD3LSN8PY8oJ4MTpi',
+      { headers: { 'User-Agent': 'Mozilla/5.0' } }
+    );
+    console.log("✅ GIB Price API response:", response.data);
+  } catch (error) {
+    console.error("❌ GIB API Error:", error?.response?.status, error?.response?.data || error.message);
+  }
+} // ✅ <-- this was missing
 
 async function sendTelegramAlert(message) {
   const url = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
