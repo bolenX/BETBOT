@@ -37,7 +37,7 @@ async function monitor() {
 
   if (price !== lastAlertPrice) {
     lastAlertPrice = price;
-    await sendTelegramAlert(`GIB Price Alert: $${price.toFixed(4)}`);
+    await sendTelegramAlert(`GIB Price Alert: $${price.toFixed(8)}`);
   }
 }
 
