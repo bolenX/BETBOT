@@ -13,13 +13,13 @@ let lastAlertPrice = 0;
 
 async function getGIBPrice() {
   try {
-    const response = await axios.get('https://api.geckoterminal.com/api/v2/networks/solana/pools/3aU4u9zxur3YtRVL5mHpGuYoH53wD3LSN8PY8oJ4MTpi');
-    const price = response.data.data.attributes.base_token_price_usd;
-    return parseFloat(price);
-  } catch (e) {
-    console.error('Price fetch error (GeckoTerminal):', e.message);
-    return null;
-  }
+  const response = await axios.get(
+    'https://api.geckoterminal.com/api/v2/networks/solana/pools/3aU4u9zxur3YtRVL5mHpGuYoH53wD3LSN8PY8oJ4MTpi',
+    { headers: { 'User-Agent': 'Mozilla/5.0' } }
+  );
+  console.log("✅ GIB Price API response:", response.data);
+} catch (error) {
+  console.error("❌ GIB API Error:", error?.response?.status, error?.response?.data || error.message);
 }
 
 async function sendTelegramAlert(message) {
