@@ -13,7 +13,7 @@ let lastAlertPrice = 0;
 
 async function getGIBPrice() {
   try {
-    const response = await axios.get('https://public-api.birdeye.so/public/token_price?address=GIB_TOKEN_ADDRESS', {
+    const response = await axios.get('https://public-api.birdeye.so/public/token_price?address=GZiyGCv9Ucv1xQ4KD6qDUHtcXcm5LqFDZGzD93LZFuEa', {
       headers: { 'X-API-KEY': 'birdeye_demo_key' }
     });
     return response.data.data.value;
