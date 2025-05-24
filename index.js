@@ -14,7 +14,7 @@ let lastAlertPrice = 0;
 async function getGIBPrice() {
   try {
     const response = await axios.get(
-      'https://api.geckoterminal.com/api/v2/networks/solana/pools/3aU4u9zxur3YtRVL5mHpGuYoH53wD3LSN8PY8oJ4MTpi',
+      'https://api.geckoterminal.com/api/v2/networks/solana/pools/G384jB8BvBVBMMyy7ZopdUjk7t4GsnDiWJKxG1eEM8bD',
       { headers: { 'User-Agent': 'Mozilla/5.0' } }
     );
     console.log("✅ GIB Price API response:", response.data);
