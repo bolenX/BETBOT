@@ -13,12 +13,11 @@ let lastAlertPrice = 0;
 
 async function getGIBPrice() {
   try {
-    const response = await axios.get('https://public-api.birdeye.so/public/token_price?address=GZiyGCv9Ucv1xQ4KD6qDUHtcXcm5LqFDZGzD93LZFuEa', {
-      headers: { 'X-API-KEY': 'birdeye_demo_key' }
-    });
-    return response.data.data.value;
+    const response = await axios.get('https://api.geckoterminal.com/api/v2/networks/solana/pools/dVB88UQyi3nNrWEycSh7tmUjj1Gt1feRt1qk4jyk1Uc');
+    const price = response.data.data.attributes.base_token_price_usd;
+    return parseFloat(price);
   } catch (e) {
-    console.error('Price fetch error:', e.message);
+    console.error('Price fetch error (GeckoTerminal):', e.message);
     return null;
   }
 }
